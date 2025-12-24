@@ -1,4 +1,9 @@
-Estructura de carpetas que propusimos: │
+API REST desarrollada en Node.js + TypeScript, organizada bajo el patrón MVC, con autenticación, validaciones, carga de archivos y conexión a MongoDB, diseñada para ser consumida por un frontend previamente provisto.
+
+Tecnologías utilizadas: Node.js - Express - TypeScript - MongoDB + Mongoose - JWT (JSON Web Token) - bcryptjs - Zod - Multer - Morgan - dotenv - Cors
+
+
+Estructura de carpetas que propusimos: 
 
 ── src/
 
@@ -13,44 +18,35 @@ Estructura de carpetas que propusimos: │
 
 
 ── routes/
-─ auth.routes.ts
-─ products.routes.ts
-─ email.routes.ts
+─ authRoutes.ts
+─ productsRoutes.ts
 
 
 ── controllers/
-─ auth.controller.ts
-─ products.controller.ts
-─ email.controller.ts
+─ authController.ts
+─ productsController.ts
 
 
-── services/
-─ auth.service.ts
-─ products.service.ts
-─ email.service.ts
+── interfaces/
+─ Iproduct.ts
+─ Iuser.ts
+─ IuserTokenPayload.ts
 
 
 ── models/
-─ product.model.ts
-─ user.model.ts
+─ productModel.ts
+─ userModel.ts
 
 
 ── middlewares/
-─ auth.middleware.ts
-─ rateLimit.middleware.ts
-─ validate.middleware.ts
-─ notFound.middleware.ts
-
-── schemas/
-─ product.schema.ts
-─ auth.schema.ts
-
-── types/
-─ express.d.ts
+─ authMiddleware.ts
+─ rateLimitMiddleware.ts
+─ validateMiddleware.ts
+─ notFoundMiddleware.ts
 
 
-── utils/
-─ errors.ts
+── services/
+─ authService.ts
 
 
 ─ uploads/
@@ -60,6 +56,37 @@ Estructura de carpetas que propusimos: │
 ─ package.json
 ─ tsconfig.json
 
-“El backend fue reorganizado siguiendo el patrón MVC, separando rutas, controladores, servicios y modelos, lo que mejora la mantenibilidad, escalabilidad y claridad del código. “Las rutas quedaron limitadas a la definición de endpoints, los controladores manejan las requests y responses, y la lógica de negocio se encapsuló en servicios.
+El backend fue reorganizado siguiendo el patrón MVC, separando responsabilidades para mejorar la mantenibilidad, escalabilidad y claridad del código.
 
-Separé el punto de entrada del servidor (server.ts) de la configuración de Express (app.ts), evitando un archivo monolítico y resolviendo problemas de mantenimiento y escalabilidad.”
+Routes: definen los endpoints.
+
+Controllers: manejan las requests y responses.
+
+Services: encapsulan la lógica de negocio.
+
+Models: definen los esquemas y acceso a datos.
+
+Middlewares: lógica transversal (auth, validaciones, rate limit).
+
+Se separó el punto de entrada del servidor (server.ts) de la configuración de Express (app.ts), evitando un archivo monolítico y resolviendo problemas de mantenimiento y escalabilidad.
+
+Funcionalidades:
+
+Crear productos (protegido)
+
+Obtener listado de productos
+
+Filtrado desde base de datos usando query params:
+
+Categoría
+
+Precio mínimo / máximo
+
+Nombre (búsqueda parcial)
+
+Actualizar productos (protegido)
+
+Eliminar productos (protegido)
+
+Proyecto desarrollado como Trabajo Final de Backend – UTN
+Alumno: José Quesada
